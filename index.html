@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUDMV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Geist';
+            src: url('fonts/ttf/Geist-Regular.ttf') format('truetype'); /* Adjust the path as necessary */
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Geist', sans-serif;
+        }
+
+        body {
+            background-color: whitesmoke;
+            color: #fff;
+            /* overflow: hidden;*/
+            transition: background-color 0.5s ease;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: transparent;
+            z-index: 10;
+        }
+
+        .navbar .brand,
+        .navbar .location {
+            color: #fff;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar .brand {
+            font-size: 1.5em;
+            font-weight: 800;
+            margin-right: auto;
+        }
+
+        .navbar .brand:hover {
+            color: #04680c;
+        }
+
+        .navbar .location {
+            font-size: 1em;
+            margin-right: 20px;
+        }
+
+        .menu-toggle {
+            font-size: 1.2em;
+            color: #fff;
+            cursor: pointer;
+            background: none;
+            border: none;
+            outline: none;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Sidebar menu styling */
+        .menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100vw;
+            height: 100vh;
+            background-color:black;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-direction: row;
+            transition: all 0.4s ease;
+            z-index: 9;
+            padding: 0 20px;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            padding-left: 20px;
+        }
+
+        .menu a {
+            display: block;
+            padding: 20px 0;
+            font-size: 2.5em;
+            color: whitesmoke;
+            text-decoration: none;
+        }
+
+        .menu a:hover {
+            color: #888;
+        }
+
+        .menu .menu-image {
+            max-width: 25%;
+            height: auto;
+        }
+
+        .menu .menu-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 1px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .menu-open .menu {
+            left: 0;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .main-content h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .main-content p {
+            font-size: 1.2em;
+            color: whitesmoke;
+        }
+
+        /* Section Styling */
+        section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            transition: background-color 0.5s ease; /* Smooth transition */
+        }
+
+        /* Section1 Section Styling */
+        .section1 {
+            min-height: 120vh;
+            background-color: black;
+            color: whitesmoke;
+            align-items: left;
+            justify-content: left;
+        }
+
+        /* Default text color */
+        .section1, .section2, .section3 {
+            transition: color 0.5s ease;
+        }
+
+        /* Active section text color */
+        .section1.active {
+            color: whitesmoke;  /* Example: change to black for section1 */
+        }
+
+        .section2.active {
+            background-color: whitesmoke; /* Change to white when active */
+            color: whitesmoke; /* Ensure text color changes for contrast */
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Active section text color */
+        .section3.active {
+            background-color: black;
+            color: whitesmoke; 
+        }
+        .section1-title {
+            font-size: 10vw; /* Sets font size to a smaller, viewport-relative unit */
+            font-weight: 1000;
+            text-transform: uppercase;
+            color: whitesmoke;
+            margin-top: 300px;
+            margin-bottom: 00px;
+            margin-left: 40px;
+            letter-spacing: 3px;
+            line-height: 1.1;
+        }
+
+        @media (max-width: 768px) {
+            .section1-title {
+                font-size: 10vw; /* Further adjust for smaller screens */
+                margin-left: 20px;
+            }
+        } 
+        .section1-subtitle {
+            font-size: 2vw;
+            color: whitesmoke;
+            max-width: 900px;
+            margin-left: 40px;
+            margin-top: 10px;
+            margin-bottom: 80px;
+        }
+
+        .top-right-image {
+            position: absolute;
+            top: 120px;
+            right: 120px;
+            width: 500px;
+            height: auto;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+       /* Section1 Section Styling */
+       .section2 {
+            min-height: 100vh;
+            background: url('images/background.gif') center/cover no-repeat;
+            color: whitesmoke;
+            padding: 60px 20px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .section2-block {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        /* Section 3 Styling */
+        .section3 {
+            min-height: 100vh;
+            background-color: black;
+            color: whitesmoke;
+            padding: 60px 20px;
+            width: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .section3-block {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .section3-block img {
+            width: 30%; /* Reduce width to make it smaller */
+            height: auto; /* Keep the aspect ratio */
+            border-radius: 10px;
+        }
+        .text h2 {
+            font-size: 2em;
+            margin-top: 10px;
+        }
+
+        .text p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .text h2:hover {
+            font-size: 2.2em; /* Adjust size as needed */
+            /*color: #04680c; */
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1.5s ease-in;
+        }
+
+        .visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="brand"><a href="index.html" style="color: inherit; text-decoration: none;">GUDMV*</a></div>
+        <div class="location">Brooklyn - New York City</div>
+        <button class="menu-toggle" onclick="toggleMenu()">☰ MENU</button>
+    </div>
+
+    <!-- Full-screen Menu -->
+    <div class="menu" id="menu">
+        <div class="menu-list">
+            <a href="index.html">HOME</a>
+            <a href="about.html">OUR MOVEMENT</a>
+            <a href="calendar.html">UPCOMING EVENTS</a>
+            <a href="gallery.html">GALLERY</a>
+            <a href="contact.html">CONTACT US</a>
+        </div>
+        <div class="menu-image">
+            <img src="images/000050090038.jpg" alt="Menu Image">
+        </div>
+    </div>
+
+    <!-- Section 1-->
+    <section class="section1">
+        <div class="section1-content">
+            <h1 class="section1-title">
+                <span class="line">WE ARE</span><br>
+                <span class="line">GUDMV*</span><br>
+                <span class="line">ENT/</span>
+            </h1>
+            <p class="section1-subtitle">A Brooklyn collective—setting the stage for up and coming music and unforgettable nights.</p>
+        </div>
+        <img src="images/gudmv-greenbetterpsd.jpg" alt="Top Right Image" class="top-right-image fade-in">
+    </section>
+
+    <!-- Section 2-->
+    <section class="section2">
+        <div class="section2-block">
+            <div class="text">
+                <h2><a href="about.html" style="color: inherit; text-decoration: none;">Our Story</a></h2>
+                <p>Founded by a couple of guys from Guam and Maryland existing in New York.</p>
+            </div>
+        </div>
+    </section>
+   
+    <!-- Section 3-->
+    <section class="section3">
+        <div class="section3-block">
+            <div class="text">
+                <div class="text">
+                    <h2><a href="gallery.html" style="color: inherit; text-decoration: none;">-> Our Last Event</a></h2>
+                </div>
+                <p>Details about your services, goals, or expertise areas.</p>
+            </div>
+            <img src="images/C03CA7C1-E49C-4F83-89FA-0F1D5932410701119_21.jpeg" alt="Image 2">
+        </div>
+    </section>
+
+    <script>
+        function toggleMenu() {
+            document.body.classList.toggle('menu-open');
+        }
+
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            sections.forEach((section) => {
+                const rect = section.getBoundingClientRect();
+                const sectionText = section.querySelector('.section1-text, .section2-text');
+                if (rect.top >= 0 && rect.top <= window.innerHeight / 2) {
+                    section.classList.add('active');
+                    if (sectionText) {
+                        sectionText.style.color = window.getComputedStyle(section).backgroundColor;
+                    }
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+        });
+
+        window.addEventListener("load", () => {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach((el) => {
+                el.classList.add('visible');
+            });
+        });
+    </script>
+</body>
+</html>

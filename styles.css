@@ -1,0 +1,59 @@
+/* General Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Hero Section Styling */
+.hero {
+    background: url('images/hero-background.jpg') center/cover no-repeat;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+}
+
+.hero-content p {
+    font-size: 1.5em;
+    max-width: 600px;
+}
+
+/* Content Section Styling */
+.content {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.content-block {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.content-block img {
+    width: 50%;
+    border-radius: 10px;
+}
+
+.text h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.text p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}

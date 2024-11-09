@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Geist';
+            src: url('fonts/ttf/Geist-Regular.ttf') format('truetype'); /* Adjust the path as necessary */
+        }
+       
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Geist', sans-serif;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: transparent; /* Transparent background */
+            z-index: 10;
+        }
+
+        .navbar .brand,
+        .navbar .location {
+            color: #fff; /* White text */
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Optional: Adds a slight shadow for better readability */
+        }
+
+        /* Update the styling to use space between for brand, location, and menu button */
+        .navbar .brand {
+            font-size: 1.5em;
+            font-weight: 800;
+            color: whitesmoke;
+            margin-right: auto; /* Aligns brand to the left */
+        }
+
+        .navbar .brand:hover {
+            color: #04680c;
+        }
+
+        .navbar .location {
+            font-size: 1em;
+            color: whitesmoke;
+            margin-right: 20px; /* Adds space between location and the menu button */
+        }
+
+        .menu-toggle {
+            font-size: 1.2em;
+            color: #fff;
+            cursor: pointer;
+            background: none;
+            border: none;
+            outline: none;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Sidebar menu styling */
+        .menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100vw;
+            height: 100vh;
+            background-color: #111;
+            display: flex;
+            align-items: center;
+            justify-content: space-around; /* Adjusts centering of the list */
+            flex-direction: row;
+            transition: all 0.4s ease;
+            z-index: 9;
+            padding: 0 20px;
+        }
+
+        /* Centered menu list */
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Aligns links to the left */
+            justify-content: center;
+            padding-left: 20px; /* Adds spacing from the left edge */
+        }
+
+        /* Larger and centered menu links */
+        .menu a {
+            display: block;
+            padding: 20px 0;
+            font-size: 2.5em; /* Larger font size */
+            color: whitesmoke;
+            text-decoration: none;
+            text-align: center; /* Center-aligns text */
+        }
+
+        .menu a:hover {
+            color: #888;
+        }
+
+        /* Sidebar menu image styling */
+        .menu .menu-image {
+            max-width: 25%; /* Adjust the size of the image */
+            height: auto;
+            display: block;
+            /* opacity: 0.0;  Optional: add transparency */
+        }
+
+        /* Optional: Ensure the image inside menu-image maintains aspect ratio */
+        .menu .menu-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 1px; /*Optional: rounded corners */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Optional: shadow effect */
+        }
+
+        /* Show menu on toggle */
+        .menu-open .menu {
+            left: 0;
+        }
+
+        /* Hero Section Styling */
+        .hero {
+            background: url('images/IMG_2935.jpeg') center/cover no-repeat;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+        }
+
+        .hero-content p {
+            font-size: 1.5em;
+            max-width: 600px;
+        }
+
+        /* Content Section Styling */
+        .content {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .content-block {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .content-block img {
+            width: 50%;
+            border-radius: 10px;
+        }
+
+        .text h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .text p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+       <div class="navbar">
+        <div class="brand"><a href="index.html" style="color: inherit; text-decoration: none;">GUDMV*</a></div>
+        <div class="location">Brooklyn - New York City</div>
+        <button class="menu-toggle" onclick="toggleMenu()">☰ MENU</button>
+    </div>
+
+    <!-- Full-screen Menu -->
+    <div class="menu" id="menu">
+        <div class="menu-list">
+            <a href="index.html">HOME</a>
+            <a href="about.html">OUR MOVEMENT</a>
+            <a href="calendar.html">UPCOMING EVENTS</a>
+            <a href="gallery.html">GALLERY</a>
+            <a href="contact.html">CONTACT US</a>
+        </div>
+        <!-- Add image on the right side -->
+        <div class="menu-image">
+            <img src="images/000050090038.jpg" alt="Menu Image">
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>About Us</h1>
+            <p>Your company’s mission statement or tagline here.</p>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content">
+        <div class="content-block">
+            <img src="images/000063710014.jpg" alt="Image 1">
+            <div class="text">
+                <h2>Our Story</h2>
+                <p>A short description about the company’s origin, mission, or values.</p>
+            </div>
+        </div>
+        
+        <div class="content-block">
+            <div class="text">
+                <h2>What We Do</h2>
+                <p>Details about your services, goals, or expertise areas.</p>
+            </div>
+            <img src="images/IMG_4008.jpeg" alt="Image 2">
+        </div>
+    </section>
+   
+    <script>
+        function toggleMenu() {
+            document.body.classList.toggle('menu-open');
+        }
+    </script>
+
+</body>
+</html>
